@@ -1,41 +1,19 @@
 <template>
-    <div>
-        <div class="video-tool">
-            <video class="video-js" ref="videoPlayer"></video>
-        </div>
-        <div>
-            <span>
-                Reproducir start: {{ startTime }} - End: {{ endTime }}
-                <button @click="playVideo">Reproduct</button>
-            </span>
-        </div>
-        <pre>Set Time Value: {{ setTimeValue }}</pre>
-        <pre>Source video: {{ sourceData }}</pre>
-        <pre>Start: {{ startTime }}</pre>
-        <pre>End: {{ endTime }}</pre>
-    </div>
+	<div>
+		<div class="video-tool">
+			<video class="video-js" ref="videoPlayer"></video>
+		</div>
+	</div>
 </template>
 
 <script>
 import videojs from 'video.js'
-import offset from 'videojs-offset/dist/videojs-offset'
 import 'video.js/dist/video-js.css'
 
 export default {
-	name: 'VideoTool',
+	name: 'VideoPlayer',
 
-	props: {
-		setTimeValue: { type: Array, required: false },
-		// aspectRatio: { type: String, required: true },
-		// poster: { type: String, required: true },
-		// sourceData: { type: Array, required: true }
-
-		aspectRatio: { type: String, required: true },
-		endTime: { type: Number, required: false },
-		poster: { type: String, required: true },
-		sourceData: { type: Array, required: true },
-		startTime: { type: Number, required: false }
-	},
+	props: ['setTimeValue', 'aspectRatio', 'startTime', 'endTime', 'poster', 'sourceData'],
 
 	data() {
 		return {
@@ -65,8 +43,6 @@ export default {
 			this.player.offset({
 				start: this.setTimeValue[0].start,
 				end: this.setTimeValue[0].end,
-				// start: this.startTime,
-				// end: this.endTime,
 				restart_beginning: false
 			})
 			this.player.reset()
