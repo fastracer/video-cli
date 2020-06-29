@@ -21,7 +21,7 @@
         <div>
             <span>
                 Reproducir start: {{ startTime }} - End: {{ endTime }}
-                <button @click="playVideo">Reproducir</button>
+                <button @click="playVideo">Reproduct</button>
             </span>
         </div>
         <pre>Set Time Value: {{ setTimeValue }}</pre>
@@ -32,12 +32,12 @@
 </template>
 
 <script>
-import videojs from "video.js";
-import offset from "videojs-offset/dist/videojs-offset";
-import "video.js/dist/video-js.css";
+import videojs from 'video.js'
+import offset from 'videojs-offset/dist/videojs-offset'
+import 'video.js/dist/video-js.css'
 
 export default {
-    name: "VideoTool",
+    name: 'VideoTool',
 
     props: {
         setTimeValue: { type: Array, required: false },
@@ -61,25 +61,18 @@ export default {
                 autoplay: false,
                 controls: true,
                 controlBar: {
-                    children: [
-                        "playToggle",
-                        "volumePanel",
-                        "playbackRateMenuButton",
-                        "progressControl",
-                        "remainingTimeDisplay",
-                        "fullscreenToggle"
-                    ],
+                    children: ['playToggle', 'volumePanel', 'playbackRateMenuButton', 'progressControl', 'remainingTimeDisplay', 'fullscreenToggle'],
                     pictureInPictureToggle: true,
                     volumePanel: {
                         inline: false
                     }
                 },
                 poster: this.poster,
-                preload: "auto",
+                preload: 'auto',
                 fluid: true,
                 sources: this.sourceData
             }
-        };
+        }
     },
 
     methods: {
@@ -90,24 +83,24 @@ export default {
                 // start: this.startTime,
                 // end: this.endTime,
                 restart_beginning: false
-            });
-            this.player.reset();
-            this.player.src(this.sourceData);
-            await this.player.play();
+            })
+            this.player.reset()
+            this.player.src(this.sourceData)
+            await this.player.play()
         }
     },
 
     mounted() {
-        this.player = videojs(this.$refs.videoPlayer, this.options);
-        console.log(this.setTimeValue);
+        this.player = videojs(this.$refs.videoPlayer, this.options)
+        console.log(this.setTimeValue)
     },
 
     beforeDestroy() {
         if (this.player) {
-            this.player.dispose();
+            this.player.dispose()
         }
     }
-};
+}
 </script>
 
 <style>
