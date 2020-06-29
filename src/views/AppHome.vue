@@ -4,8 +4,8 @@
       :source-data="data.video_link"
       :start-time="data.start"
       :end-time="data.end"
-      :set-time-value="data.setTimeValue"
       :poster="data.poster"
+      :set-time-value="data.setTimeValue"
       aspect-ratio="16:9"
     />
   </div>
