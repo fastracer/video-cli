@@ -3,6 +3,7 @@
         <video class="video-js" ref="videoPlayer" />
         <pre>{{ setTimeValue }}</pre>
         <!-- ejemplo de como debe de funcionar -->
+        <v-btn @click="playVideo()">Reproductir</v-btn>
         <span>ejemplo de como debe de funcionar</span>
         <template v-for="(value, index) in setTimeValue">
             <div :key="index" class="button-player mb-4 mt-4">
@@ -47,11 +48,18 @@ export default {
 
     methods: {
         async playVideo() {
-            this.player.offset({
-                start: this.setTimeValue[0].start,
-                end: this.setTimeValue[0].end,
-                restart_beginning: false
-            })
+            // TODO not working
+            // this.player.TimeRanges({
+            //     start: 200,
+            //     end: 300
+            // })
+
+            // TODO working, but not accept array types
+            // this.player.offset({
+            //     start: this.setTimeValue[0].start,
+            //     end: this.setTimeValue[0].end,
+            //     restart_beginning: false
+            // })
             this.player.reset()
             this.player.src(this.sourceData)
             await this.player.play()
