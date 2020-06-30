@@ -1,13 +1,15 @@
 <template>
     <div class="video-tool">
+        <!-- Only the video component should remain here -->
         <video class="video-js" ref="videoPlayer" />
-        <pre>{{ setTimeValue }}</pre>
         <!-- ejemplo de como debe de funcionar -->
-        <v-btn @click="playVideo()">Reproductir</v-btn>
-        <span>ejemplo de como debe de funcionar</span>
+        <!-- This whole section should work on the father, not the son. -->
+        <pre>{{ setTimeValue }}</pre>
+        <v-btn @click="playVideo()">Play</v-btn>
+        <span>example of how it should work</span>
         <template v-for="(value, index) in setTimeValue">
             <div :key="index" class="button-player mb-4 mt-4">
-                <v-btn @click="playVideo()">Reproducir desde {{ value.start }}seg hasta {{ value.end }}seg</v-btn>
+                <v-btn @click="playVideo()">Play from {{ value.start }}seg until {{ value.end }}seg</v-btn>
             </div>
         </template>
     </div>

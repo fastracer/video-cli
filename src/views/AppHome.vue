@@ -10,11 +10,11 @@
                 @playVideo="playVideo = $event"
                 aspect-ratio="16:9"
             />
-            <span>Aqui empieza botones del padre</span>
+            <span>Here begins parent buttons</span>
             <!-- Aqui empieza botones del padre -->
             <template v-for="(value, index) in data.setTimeValue">
                 <div :key="index" class="button-player mb-4 mt-4">
-                    <v-btn @click="playVideo()">Reproducir desde {{ value.start }}seg hasta {{ value.end }}seg</v-btn>
+                    <v-btn @click="playVideo()">Play from {{ value.start }}seg until {{ value.end }}seg</v-btn>
                 </div>
             </template>
         </div>
