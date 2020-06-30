@@ -7,11 +7,14 @@
                 :set-time-value="data.setTimeValue"
                 :source-data="data.video_link"
                 :start-time="data.start"
+                @playVideo="playVideo = $event"
                 aspect-ratio="16:9"
             />
+            <span>Aqui empieza botones del padre</span>
+            <!-- Aqui empieza botones del padre -->
             <template v-for="(value, index) in data.setTimeValue">
                 <div :key="index" class="button-player mb-4 mt-4">
-                    <v-btn @click="playerVideo()">Reproducir desde {{ value.start }}seg hasta {{ value.end }}seg</v-btn>
+                    <v-btn @click="playVideo()">Reproducir desde {{ value.start }}seg hasta {{ value.end }}seg</v-btn>
                 </div>
             </template>
         </div>
@@ -64,7 +67,8 @@ export default {
         }
     },
     methods: {
-        playerVideo() {
+        // esta funcion debe de reproductir el video segun el tiempo indicado, la funcion que lo realiza esta en la linea 43 del componente de video
+        playVideo() {
             console.log('play')
         }
     }

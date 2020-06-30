@@ -2,6 +2,13 @@
     <div class="video-tool">
         <video class="video-js" ref="videoPlayer" />
         <pre>{{ setTimeValue }}</pre>
+        <!-- ejemplo de como debe de funcionar -->
+        <span>ejemplo de como debe de funcionar</span>
+        <template v-for="(value, index) in setTimeValue">
+            <div :key="index" class="button-player mb-4 mt-4">
+                <v-btn @click="playVideo()">Reproducir desde {{ value.start }}seg hasta {{ value.end }}seg</v-btn>
+            </div>
+        </template>
     </div>
 </template>
 
@@ -54,6 +61,8 @@ export default {
     mounted() {
         this.player = videojs(this.$refs.videoPlayer, this.options)
         console.log(this.setTimeValue)
+
+        this.$emit('playVideo', this.setTimeValue)
     },
 
     beforeDestroy() {
